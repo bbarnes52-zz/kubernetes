@@ -124,11 +124,6 @@ func (pl *NodePorts) Filter(ctx context.Context, cycleState *framework.CycleStat
 	return nil
 }
 
-// Fits checks if the pod fits the node.
-func Fits(pod *v1.Pod, nodeInfo *framework.NodeInfo) bool {
-	return fitsPorts(getContainerPorts(pod), nodeInfo)
-}
-
 func fitsPorts(wantPorts []*v1.ContainerPort, nodeInfo *framework.NodeInfo) bool {
 	// try to see whether existingPorts and wantPorts will conflict or not
 	existingPorts := nodeInfo.UsedPorts
